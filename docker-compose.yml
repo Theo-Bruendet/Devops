@@ -1,0 +1,35 @@
+version: '2.0'
+services:
+  
+  mybackend: 
+    build:
+      ./backendapi/simple-api
+    networks:
+      - myapp
+    depends_on:
+      - mypostgres
+
+  mypostgres:
+    build:
+      ./postgres
+    networks:
+      - myapp
+    volumes:
+      - volpostgres:/var/lib/postgresql/data
+    
+  httpd:
+    build:
+      ./http
+    ports:
+      - "80:80"
+    networks:
+      - myapp
+    depends_on:
+      - mypostgres
+      - mybackend
+
+networks:
+  myapp:
+
+volumes:
+  volpostgres: {}
