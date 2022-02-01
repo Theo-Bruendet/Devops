@@ -21,7 +21,7 @@ jobs:
           distribution: 'adopt'
       #finally build your app with the latest command
       - name: Build and test with Maven
-        run: mvn clean verify --file ./backendapi/simple-api
+        run: mvn -B verify sonar:sonar -Dsonar.projectKey=devops-2022 -Dsonar.organization=Devops -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }} --file ./simple-api/pom.xml
 
   # define job to build and publish docker image
   build-and-push-docker-image:
