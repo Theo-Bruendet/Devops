@@ -20,6 +20,8 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       #finally build your app with the latest command
-      - name: Build and test with Maven
+      - name: aller au dossier 
         run: cd ./backendapi/simple-api
+      - name: Build and test with Maven
+
         run: mvn clean verify
