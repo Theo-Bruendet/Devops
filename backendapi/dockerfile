@@ -1,0 +1,5 @@
+FROM openjdk:11
+RUN mkdir /usr/src/myapp
+COPY Main.class /usr/src/myapp
+WORKDIR /usr/src/myapp
+CMD ["java", "Main"]
