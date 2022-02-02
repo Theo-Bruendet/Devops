@@ -1,0 +1,6 @@
+- name: Run app
+  docker_container:
+    name: mybackend
+    image: tbruendetcpe/tp-devops-cpe:mybackend
+    networks:
+      - name: network_one

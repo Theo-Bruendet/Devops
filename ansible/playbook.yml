@@ -1,0 +1,10 @@
+- hosts: all
+  gather_facts: false
+  become: yes
+# Install Docker
+  roles:
+    - docker
+    - network
+    - app
+    - database
+    - proxy

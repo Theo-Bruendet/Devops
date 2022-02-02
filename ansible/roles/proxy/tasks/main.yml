@@ -1,0 +1,8 @@
+- name: Run proxy
+  docker_container:
+    name: http
+    image: tbruendetcpe/tp-devops-cpe:http
+    ports:
+      - "80:80"
+    networks:
+      - name: network_one

@@ -1,0 +1,29 @@
+- hosts: all
+  gather_facts: false
+  become: yes
+# Install Docker
+  tasks:
+    - name: Stop a container
+      docker_container:
+        name: mypostgres
+        state: stopped
+    - name: Stop a container
+      docker_container:
+        name: mybackend
+        state: stopped
+    - name: Stop a container
+      docker_container:
+        name: http
+        state: stopped
+    - name: remove container
+      docker_container:
+        name: mypostgres
+        state: absent        
+    - name: remove container
+      docker_container:
+        name: mybackend
+        state: absent
+    - name: remove container
+      docker_container:
+        name: http
+        state: absent

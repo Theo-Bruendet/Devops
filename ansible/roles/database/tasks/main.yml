@@ -1,0 +1,6 @@
+- name: Run database
+  docker_container:
+    name: mypostgres
+    image: tbruendetcpe/tp-devops-cpe:mypostgres
+    networks:
+      - name: network_one
