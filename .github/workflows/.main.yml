@@ -21,7 +21,10 @@ jobs:
           distribution: 'adopt'
       #finally build your app with the latest command
       - name: Build and test with Maven
-        run: mvn -B verify sonar:sonar -Dsonar.projectKey=devops-2022 -Dsonar.organization=Devops -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }} --file ./simple-api/pom.xml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Theo-Bruendet_Devops --file ./simple-api/pom.xml
 
   # define job to build and publish docker image
   build-and-push-docker-image:
@@ -29,7 +32,7 @@ jobs:
     # run only when code is compiling and tests are passing
     runs-on: ubuntu-latest
     
-    # steps to perform in job
+    # steps to perform in jobe
     steps:
       - name: Login to DockerHub
         run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}

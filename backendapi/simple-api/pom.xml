@@ -16,6 +16,8 @@
 	<properties>
 		<java.version>11</java.version>
 		<jacoco-maven-plugin.version>0.8.6</jacoco-maven-plugin.version>
+		<sonar.organization>theo-bruendet</sonar.organization>
+  		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
 
 	<dependencies>
